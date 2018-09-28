@@ -1,0 +1,31 @@
+---
+resources:
+- name: fogger-devel
+  type: git
+  source:
+    uri: https://github.com/elrot/fgr.git
+    branch: master
+
+- name: fogger-ci
+  type: git
+  source:
+    uri: https://github.com/elrot/fgr-ci.git
+    branch: master
+
+- name: midnight-timer
+  type: time
+  source:
+    interval: 2m
+
+jobs:
+- name: nightly-build
+  public: true
+  serial: true
+  plan:
+  - get: fogger-ci
+  - get: fogger-devel
+  - get: midnight-timer
+    trigger: true
+  - task: fogger-edge-nightly-build
+    file: fogger-ci/tasks/build.yml
+                                            
