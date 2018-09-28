@@ -18,4 +18,4 @@ go get -u github.com/whyrusleeping/gx-go
 
 gx install
 
-GOOS=linux GOARCH=x86_64 go build -o .build/fogger cmd/foggerd/*.go
+GOOS=linux GOARCH=amd64 go build -o .build/fogger cmd/foggerd/*.go
