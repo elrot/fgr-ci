@@ -9,6 +9,8 @@ apk update && apk upgrade && \
 # application input is in gopath/src/github.com/cloudfoundry-community/simple-go-web-app folder
 # $GOPATH is gopath/ folder
 export GOPATH=$(pwd)/gopath
+export PATH=$PATH:$GOPATH/bin
+
 cd gopath/src/github.com/elrot/fgr/
 
 go get -u github.com/whyrusleeping/gx
