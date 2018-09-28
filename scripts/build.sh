@@ -8,4 +8,5 @@ set -e
 export GOPATH=$(pwd)/gopath
 
 cd gopath/src/github.com/elrot/fgr/
+gx install
 GOOS=linux GOARCH=amd64 go build -o .build/fogger cmd/foggerd/*.go
