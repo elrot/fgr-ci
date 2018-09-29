@@ -10,4 +10,4 @@ inputs:
 - name: fogger-binaries
 
 run:
-  path: fogger-ci/scripts/show_files.sh
+  path: ls
