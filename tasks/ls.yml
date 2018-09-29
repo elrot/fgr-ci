@@ -7,7 +7,9 @@ image_resource:
 
 inputs:
 - name: fogger-ci
-- name: fogger-binaries
+# - name: fogger-binaries
 
 run:
-  path: fogger-ci/scripts/show_files.sh
+  path: echo
+  args:
+  - hello world
