@@ -10,5 +10,5 @@ export GOPATH=$ROOT/gopath
 
 cd $ROOT/gopath/src/github.com/elrot/fgr/
 gx install
-GOOS=linux GOARCH=amd64 go build -o $ROOT/fogger-binaries cmd/foggerd/*.go
+GOOS=linux GOARCH=amd64 go build -o $ROOT/fogger-binaries/fogger cmd/foggerd/*.go
 
