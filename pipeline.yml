@@ -1,6 +1,13 @@
 ---
+resource_types:
+- name: ftp-resource
+  type: docker-image
+  source:
+      repository: machinerytool/concourse-lftp-resource
+      tag: latest
+
 resources:
-- name: fogger-devel
+- name: fogger-code
   type: git
   source:
     uri: https://github.com/elrot/fgr.git
@@ -23,9 +30,24 @@ jobs:
   serial: true
   plan:
   - get: fogger-ci
-  - get: fogger-devel
+  - get: fogger-code
   - get: midnight-timer
     trigger: true
   - task: fogger-edge-nightly-build
     file: fogger-ci/tasks/build.yml
+  
+  - task: show-binaries
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: busybox}
+
+      inputs:
+      - name: fogger-ci
+      - name: fogger-binaries
+
+      run:
+        path: fogger-ci/scripts/show_files.sh
                                             
+                                      

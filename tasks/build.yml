@@ -7,8 +7,11 @@ image_resource:
 
 inputs:
 - name: fogger-ci
-- name: fogger-devel
+- name: fogger-code
   path: gopath/src/github.com/elrot/fgr
+
+outpputs:
+- name: fogger-binaries
 
 run:
   path: fogger-ci/scripts/build.sh
