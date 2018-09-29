@@ -33,6 +33,7 @@ jobs:
   - get: fogger-code
   - get: midnight-timer
     trigger: true
+
   - task: fogger-edge-nightly-build
     file: fogger-ci/tasks/build.yml
   
@@ -41,10 +42,8 @@ jobs:
       platform: linux
       image_resource:
         type: docker-image
-        source: 
-          repository: fogger/alpine
-          tag: edge
-
+        source: {repository: fogger/alpine, tag: edge}
+    
       inputs:
       - name: fogger-ci
       - name: fogger-binaries
