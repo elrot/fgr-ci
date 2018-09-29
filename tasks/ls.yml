@@ -11,3 +11,5 @@ inputs:
 
 run:
   path: ls
+  args:
+    - "fogger-binaries/"
