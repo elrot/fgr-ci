@@ -10,7 +10,7 @@ inputs:
 - name: fogger-code
   path: gopath/src/github.com/elrot/fgr
 
-outpputs:
+outputs:
 - name: fogger-binaries
 
 run:
