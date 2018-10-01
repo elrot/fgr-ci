@@ -3,7 +3,7 @@
 set -e
 
 ROOT=$(pwd)
-BIN=$ROOT/mister-binaries/mister/
+BIN=$ROOT/mister-binaries/mister
 
 
 export GOPATH=$ROOT/gopath
