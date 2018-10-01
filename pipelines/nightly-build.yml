@@ -1,10 +1,16 @@
 ---
 resource_types:
-- name: ftp-resource
+- name: ftp
   type: docker-image
   source:
-      repository: machinerytool/concourse-lftp-resource
+      repository: elrot/concourse-lftp-resource
       tag: latest
+
+- name: slack
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag: latest
 
 resources:
 - name: mister-code
@@ -18,6 +24,16 @@ resources:
   source:
     uri: https://github.com/elrot/mister-ci.git
     branch: master
+
+- name: mister-ftp
+  type: ftp
+  source:
+    url: ((mister-ftp-url))
+
+- name: mister-slack
+  type: slack
+  source:
+    url: ((mister-slack-webhook))
 
 - name: midnight-timer
   type: time
@@ -37,5 +53,15 @@ jobs:
   - task: build
     file: mister-ci/tasks/build.yml
   
+  - put: mister-ftp
+    params:
+      path: mister-binaries/
+
+  - put: mister-slack
+    params:
+      channel: '#ci'
+      username: Concourse
+      text: |
+        Nightly build finished
                                             
                                       
