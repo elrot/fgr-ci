@@ -7,16 +7,16 @@ resource_types:
       tag: latest
 
 resources:
-- name: fogger-code
+- name: mister-code
   type: git
   source:
-    uri: https://github.com/elrot/fgr.git
+    uri: https://github.com/elrot/mister.git
     branch: master
 
-- name: fogger-ci
+- name: mister-ci
   type: git
   source:
-    uri: https://github.com/elrot/fgr-ci.git
+    uri: https://github.com/elrot/mister-ci.git
     branch: master
 
 - name: midnight-timer
@@ -29,15 +29,13 @@ jobs:
   public: true
   serial: true
   plan:
-  - get: fogger-ci
-  - get: fogger-code
+  - get: mister-ci
+  - get: mister-code
   - get: midnight-timer
     trigger: true
 
-  - task: fogger-edge-nightly-build
-    file: fogger-ci/tasks/build.yml
+  - task: build
+    file: mister-ci/tasks/build.yml
   
-  - task: show-binaries
-    file: fogger-ci/tasks/ls.yml
                                             
                                       
