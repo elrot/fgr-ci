@@ -14,7 +14,18 @@ gx install
 DATE=$(date '+%Y%m%d%H%M%S')
 COMMIT=$(git rev-parse --short HEAD)
 
-make build-tarball GOOS=linux GOARCH=386 TARBALL=$BIN/linux/static/nightly/x86/mister-0.0.0-$DATE-$COMMIT.tar.gz
-make build-tarball GOOS=linux GOARCH=amd64 TARBALL=$BIN/linux/static/nightly/x86_64/mister-0.0.0-$DATE-$COMMIT.tar.gz
-make build-tarball GOOS=linux GOARCH=arm TARBALL=$BIN/linux/static/nightly/armhf/mister-0.0.0-$DATE-$COMMIT.tar.gz
-make build-tarball GOOS=linux GOARCH=arm64 TARBALL=$BIN/linux/static/nightly/aarch64/mister-0.0.0-$DATE-$COMMIT.tar.gz
+build(){
+    GOOS=$1
+    GOARCH=$2
+    ARCH=$3
+
+    DIR=$BIN/$GOOS/static/nightly/$ARCH/
+
+    mkdir -p $DIR
+    make build-tarball GOOS=$GOOS GOARCH=$GOARCH TARBALL=$DIR/mister-0.0.0-$DATE-$COMMIT.tar.gz
+}
+
+build linux 386 x86
+build linux amd64 x86_64
+build linux arm armhf
+build linux arm64 aarch64
