@@ -29,3 +29,4 @@ build linux 386 x86
 build linux amd64 x86_64
 build linux arm armhf
 build linux arm64 aarch64
+build darwin amd64 x86_64
