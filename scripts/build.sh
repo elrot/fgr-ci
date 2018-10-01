@@ -19,7 +19,7 @@ build(){
     GOARCH=$2
     ARCH=$3
 
-    DIR=$BIN/$GOOS/static/nightly/$ARCH/
+    DIR=$BIN/$GOOS/static/nightly/$ARCH
 
     mkdir -p $DIR
     make build-tarball GOOS=$GOOS GOARCH=$GOARCH TARBALL=$DIR/mister-0.0.0-$DATE-$COMMIT.tar.gz
