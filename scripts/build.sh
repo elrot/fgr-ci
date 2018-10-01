@@ -29,4 +29,6 @@ build linux 386 x86
 build linux amd64 x86_64
 build linux arm armhf
 build linux arm64 aarch64
+build linux ppc64le ppc64le
+build linux s390x s390x
 build darwin amd64 x86_64
