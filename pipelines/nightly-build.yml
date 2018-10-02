@@ -35,19 +35,22 @@ resources:
   source:
     url: ((mister-slack-webhook))
 
-- name: midnight-timer
+- name: after-midnight
   type: time
   source:
-    interval: 2m
+    start: 12:00 AM
+    stop: 1:00 AM
+    location: Europe/Warsaw
 
 jobs:
 - name: nightly-build
   public: true
   serial: true
+  build_logs_to_retain: 10
   plan:
   - get: mister-ci
   - get: mister-code
-  - get: midnight-timer
+  - get: after-midnight
     trigger: true
 
   - task: build
